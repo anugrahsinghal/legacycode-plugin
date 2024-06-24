@@ -5,11 +5,16 @@
     <vendor>anugrahsinghal</vendor>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow factoryClass="com.github.anugrahsinghal.legacycodeplugin.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.github.anugrahsinghal.legacycodeplugin.services.FileNavService"/>
     </extensions>
 
     <applicationListeners>
