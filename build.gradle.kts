@@ -24,6 +24,8 @@ repositories {
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
 //    implementation(libs.exampleLibrary)
+    implementation("io.ktor:ktor-server-core:2.3.0") { exclude(group = "org.slf4j") }
+    implementation("io.ktor:ktor-server-netty:2.3.0") { exclude(group = "org.slf4j") }
 }
 
 // Set the JVM language level used to build the project.
@@ -36,9 +38,11 @@ intellij {
     pluginName = properties("pluginName")
     version = properties("platformVersion")
     type = properties("platformType")
+    plugins.set(listOf("com.intellij.java"))
+
 
     // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
-    plugins = properties("platformPlugins").map { it.split(',').map(String::trim).filter(String::isNotEmpty) }
+//    plugins = properties("platformPlugins").map { it.split(',').map(String::trim).filter(String::isNotEmpty) }
 }
 
 // Configure Gradle Changelog Plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
