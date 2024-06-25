@@ -25,7 +25,7 @@ repositories {
 dependencies {
 //    implementation(libs.exampleLibrary)
     implementation("io.ktor:ktor-server-core:2.3.0") { exclude(group = "org.slf4j") }
-    implementation("io.ktor:ktor-server-netty:2.3.0") { exclude(group = "org.slf4j") }
+    implementation("io.ktor:ktor-server-netty:2.3.12") { exclude(group = "org.slf4j") }
     implementation(kotlin("stdlib"))
 }
 
