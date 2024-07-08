@@ -20,6 +20,8 @@ import io.ktor.server.routing.*
 class FileNavService(private val project: Project) : Disposable {
     private val server = embeddedServer(Netty, port = 8080) {
         routing {
+            // curl 'localhost:8080/openFile?path=/Users/anugrah.singhal/personal/codecrafters-git-java/src/main/java/CatFileCommand.java'
+            // requires the full absolute path to the file
             get("/openFile") {
                 val filePath = call.request.queryParameters["path"]
                 if (filePath != null) {
@@ -29,7 +31,7 @@ class FileNavService(private val project: Project) : Disposable {
                     call.respond(HttpStatusCode.BadRequest, "Missing 'path' parameter")
                 }
             }
-
+            // curl 'localhost:8080/navigateToMethod?class=CloneCommand&method=clone'
             get("/navigateToMethod") {
                 val className = call.request.queryParameters["class"]
                 val methodName = call.request.queryParameters["method"]
